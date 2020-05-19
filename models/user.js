@@ -4,56 +4,60 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 25]
-      }
+        len: [1, 25],
+      },
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [8, 15]
-      }
+        len: [8, 15],
+      },
     },
     height: {
-      type: DataTypes.INT,
-      allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     height_type: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     weight: {
-      type: DataTypes.INT,
-      allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     weight_type: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     age: {
-      type: DataTypes.INT,
-      allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     image: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     city: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     state: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     zip: {
       type: DataTypes.STRING,
-      allowNull: false
-    }
+      allowNull: false,
+    },
   });
-};
 
-User.associate = function(models) {
-  User.hasMany(models.Friends, models.Cardio, models.Mind, models.Strength);
+  User.associate = function(models) {
+    User.belongsToMany(
+      models.Friends,
+      { through: models.Strength },
+      { onDelete: "CASCADE" }
+    );
+  };
   return User;
 };

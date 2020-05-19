@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "MG11181990",
-    "database": "exampledb",
+    "password": "abc@#$789",
+    "database": "sweati_db",
     "host": "localhost",
     "dialect": "mysql"
   },
