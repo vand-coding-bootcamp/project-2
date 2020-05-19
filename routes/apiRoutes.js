@@ -1,10 +1,16 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples test
+  // Get all users
   app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+    db.User.findAll({
+      // include:[
+      //   {
+      //     model: db.Cardio
+      //   }
+      // ]
+    }).then(function(User) {
+      res.json(User);
     });
   });
 
