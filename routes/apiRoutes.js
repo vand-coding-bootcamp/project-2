@@ -1,21 +1,21 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all users
+  // Get all users of app (working)
   app.get("/api/examples", function(req, res) {
     db.User.findAll({
-      include:[
+      include: [
         {
           model: db.Cardio
         },
         {
-          model:db.Mind
+          model: db.Mind
         },
         {
-          model:db.Friends
+          model: db.Friends
         },
         {
-          model:db.Strength
+          model: db.Strength
         }
       ]
     }).then(function(data) {

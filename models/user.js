@@ -35,8 +35,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     image: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.STRING
     },
     city: {
       type: DataTypes.STRING,
@@ -53,22 +52,10 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   User.associate = function(models) {
-    User.hasMany(
-      models.Cardio,
-      { onDelete: "cascade" }
-    );
-    User.hasMany(
-      models.Friends,
-      { onDelete: "cascade" }
-    );
-    User.hasMany(
-      models.Mind,
-      { onDelete: "cascade" }
-    );
-    User.hasMany(
-      models.Strength,
-      { onDelete: "cascade" }
-    );
+    User.hasMany(models.Cardio, { onDelete: "cascade" });
+    User.hasMany(models.Friends, { onDelete: "cascade" });
+    User.hasMany(models.Mind, { onDelete: "cascade" });
+    User.hasMany(models.Strength, { onDelete: "cascade" });
   };
   return User;
 };
