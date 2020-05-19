@@ -53,10 +53,21 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   User.associate = function(models) {
-    User.belongsToMany(
+    User.hasMany(
       models.Cardio,
-      { through: models.Strength },
-      { onDelete: "CASCADE" }
+      { onDelete: "cascade" }
+    );
+    User.hasMany(
+      models.Friends,
+      { onDelete: "cascade" }
+    );
+    User.hasMany(
+      models.Mind,
+      { onDelete: "cascade" }
+    );
+    User.hasMany(
+      models.Strength,
+      { onDelete: "cascade" }
     );
   };
   return User;
