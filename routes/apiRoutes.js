@@ -23,10 +23,10 @@ module.exports = function(app) {
     });
   });
 
-  // Create a new example
+  // Show user data in dashboard
   app.get("/api/dashboard/:id", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+    db.User.findOne({ where: { id: req.params.id } }).then(function(dbUser) {
+      res.json(dbUser); //When we switch over to handlebards, we need to change this line to res.render("dash", {dbUser:dbUser})
     });
   });
 
