@@ -22,11 +22,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    height_2: {
+    height_two: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    height_type_2: {
+    height_type_two: {
       type: DataTypes.STRING,
       allowNull: false
     },
