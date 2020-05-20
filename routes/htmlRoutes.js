@@ -5,7 +5,7 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     db.User.findAll({}).then(function() {
       res.render("index", {
-        msg: "Let's get Sweati.",
+        msg: "Let's get Sweati."
       });
     });
   });
