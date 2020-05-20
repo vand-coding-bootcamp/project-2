@@ -22,6 +22,14 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
+    height_2: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    height_type_2: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     weight: {
       type: DataTypes.INTEGER,
       allowNull: false
