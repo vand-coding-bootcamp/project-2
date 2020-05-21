@@ -74,4 +74,9 @@ module.exports = function(app) {
       });
     });
   });
+
+  app.post("/api/logout", function(req, res) {
+    req.logout();
+    res.redirect("/");
+  });
 };

@@ -46,6 +46,18 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/friends", function(req, res) {
+    db.Friends.create({
+      // friend is pulling from front end - be sure to add "friend" as the variable
+      friends: req.body.friend,
+      image: req.body.image,
+      // change from body to user - body is just for testing purposes in postman until front end is ready
+      UserId: req.body.userId
+    }).then(function(newFriend) {
+      res.json(newFriend);
+    });
+  });
+
   // Delete an example by id
   app.delete("/api/examples/:id", function(req, res) {
     db.Example.destroy({ where: { id: req.params.id } }).then(function(
