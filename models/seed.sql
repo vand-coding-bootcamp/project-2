@@ -5,15 +5,15 @@ INSERT INTO Users (id, username, password, height, height_type, height_two, heig
 
 -- Cardio dummy seeds
 INSERT INTO Cardio (id, cardio_act, start, end, createdAt, updatedAt, userId)  VALUES (1, "running", "2020-05-15 12:00:00", "2020-05-15 13:00:00", "2020-05-15 12:00:00", "2020-05-15 13:00:00", 1);
-INSERT INTO Cardio (id, cardio_act, start, end, createdAt, updatedAt, userId)  VALUES (2, "swimming", "2020-05-16 08:00:00", "2020-05-16 09:00:00", "2020-05-15 12:00:00", "2020-05-15 13:00:00", 1);
-INSERT INTO Cardio (id, cardio_act, start, end, createdAt, updatedAt, userId)  VALUES (3, "zumba", "2020-05-18 15:00:00", "2020-05-18 16:00:00", "2020-05-15 12:00:00", "2020-05-15 13:00:00", 1);
+INSERT INTO Cardio (id, cardio_act, start, end, createdAt, updatedAt, userId)  VALUES (2, "swimming", "2020-05-16 08:00:00", "2020-05-16 09:00:00", "2020-05-15 12:00:00", "2020-05-15 13:00:00", 2);
+INSERT INTO Cardio (id, cardio_act, start, end, createdAt, updatedAt, userId)  VALUES (3, "zumba", "2020-05-18 15:00:00", "2020-05-18 16:00:00", "2020-05-15 12:00:00", "2020-05-15 13:00:00", 3);
 
 -- Mindful dummy seeds
-INSERT INTO Mind (id, mind_act, start, end, createdAt, updatedAt, userId)  VALUES (1, "yoga", "2020-05-15 12:00:00", "2020-05-15 13:00:00", "2020-05-15 12:00:00", "2020-05-15 13:00:00", 3);
-INSERT INTO Mind (id, mind_act, start, end, createdAt, updatedAt, userId)  VALUES (2, "meditation", "2020-05-16 08:00:00", "2020-05-16 09:00:00", "2020-05-15 12:00:00", "2020-05-15 13:00:00", 3);
+INSERT INTO Mind (id, mind_act, start, end, createdAt, updatedAt, userId)  VALUES (1, "yoga", "2020-05-15 12:00:00", "2020-05-15 13:00:00", "2020-05-15 12:00:00", "2020-05-15 13:00:00", 1);
+INSERT INTO Mind (id, mind_act, start, end, createdAt, updatedAt, userId)  VALUES (2, "meditation", "2020-05-16 08:00:00", "2020-05-16 09:00:00", "2020-05-15 12:00:00", "2020-05-15 13:00:00", 2);
 INSERT INTO Mind (id, mind_act, start, end, createdAt, updatedAt, userId)  VALUES (3, "stretching", "2020-05-18 15:00:00", "2020-05-18 15:30:00", "2020-05-15 12:00:00", "2020-05-15 13:00:00", 3);
 
 -- Strength dummy seeds
-INSERT INTO Strength (id, strength_act, start, end, createdAt, updatedAt, userId)  VALUES (1, "weight training", "2020-05-15 12:00:00", "2020-05-15 13:00:00", "2020-05-15 12:00:00", "2020-05-15 13:00:00", 2);
+INSERT INTO Strength (id, strength_act, start, end, createdAt, updatedAt, userId)  VALUES (1, "weight training", "2020-05-15 12:00:00", "2020-05-15 13:00:00", "2020-05-15 12:00:00", "2020-05-15 13:00:00", 1);
 INSERT INTO Strength (id, strength_act, start, end, createdAt, updatedAt, userId)  VALUES (2, "crossfit", "2020-05-16 08:00:00", "2020-05-16 09:00:00", "2020-05-15 12:00:00", "2020-05-15 13:00:00", 2);
-INSERT INTO Strength (id, strength_act, start, end, createdAt, updatedAt, userId)  VALUES (3, "resistance bands", "2020-05-18 15:00:00", "2020-05-18 15:30:00", "2020-05-16 09:00:00", "2020-05-15 12:00:00", 2);
+INSERT INTO Strength (id, strength_act, start, end, createdAt, updatedAt, userId)  VALUES (3, "resistance bands", "2020-05-18 15:00:00", "2020-05-18 15:30:00", "2020-05-16 09:00:00", "2020-05-15 12:00:00", 3);
