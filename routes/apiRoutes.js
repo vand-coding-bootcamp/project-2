@@ -46,6 +46,13 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/connect", function(req, res) {
+    db.User.findAll({}).then(function(data) {
+      // for (var i = 0; i < db.User.length; i++) {
+      res.json(data);
+    });
+  });
+
   app.post("/api/friends", function(req, res) {
     db.Friends.create({
       // friend is pulling from front end - be sure to add "friend" as the variable
@@ -55,6 +62,14 @@ module.exports = function(app) {
       UserId: req.body.userId
     }).then(function(newFriend) {
       res.json(newFriend);
+    });
+  });
+
+  app.post("/api/friends/:id", function(req, res) {
+    db.Friends.findOne({
+      where: { id: req.body.id }
+    }).then(function(friend) {
+      res.json(friend);
     });
   });
 
