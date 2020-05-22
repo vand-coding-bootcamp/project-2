@@ -3,7 +3,7 @@ var db = require("../models");
 module.exports = function(app) {
   // Load Landing page
   app.get("/", function(req, res) {
-    db.User.findAll({}).then(function() {
+    db.User.findAll({}).then(function(dATA) {
       res.render("index", {
         msg: "Let's get Sweati."
       });

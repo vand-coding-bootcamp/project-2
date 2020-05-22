@@ -14,3 +14,13 @@
         </form>
     </div>
 </div>
+
+<script>
+
+    $.ajax({
+        url:'/login',
+        data: {username: $('#inputUsername').val() , pass: '1234'}
+    }).then(function(data){
+        console.log('thi sis the data', data);
+    })
+</script>
