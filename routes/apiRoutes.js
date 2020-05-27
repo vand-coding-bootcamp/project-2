@@ -68,7 +68,7 @@ module.exports = function(app) {
   });
 
   app.post("/api/workout", function(req, res) {
-    console.log("we shoudls ave the body to the database", req.body);
+    console.log("we should save the body to the database", req.body);
 
     if (req.body.workout_type === "cardio") {
       db.Cardio.create({
