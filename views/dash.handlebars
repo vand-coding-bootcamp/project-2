@@ -1,0 +1,14 @@
+<h1> This is your dashboard, </h1>
+
+<script>
+    
+   console.log('id form url', window.location.pathname)
+   var id = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1)
+    console.log('THis is our ide!!! for the dash', id)
+
+    $.ajax({
+        url: '/api/dashboard/' + id
+    }).then(function(data) {
+        console.log('user for dash ?', data)
+    })
+</script>

@@ -6,7 +6,7 @@ var keys = require("../config/keys");
 // Get all users of app (working)
 module.exports = function(app) {
   app.post("/api/register", function(req, res) {
-    console.log("this route is working");
+    console.log("this route is working", req.body);
 
     db.User.findOne({
       where: {
@@ -66,7 +66,7 @@ module.exports = function(app) {
             err,
             token
           ) {
-            res.json({ success: true, token: "Bearer " + token });
+            res.json({ success: true, token: "Bearer " + token , id: user.id});
           });
         } else {
           return res.status(400).json("Invalid Password");

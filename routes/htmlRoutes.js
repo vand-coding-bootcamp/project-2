@@ -10,6 +10,12 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/dashboard/:id", function(req, res) {
+    res.render("dash", {
+      msg: "Let's get Sweati."
+    });
+  });
+
   // Load Login page
   app.get("/login", function(req, res) {
     db.User.findAll({}).then(function() {

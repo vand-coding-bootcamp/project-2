@@ -1,7 +1,7 @@
 <!--Register Form-->
 <div class="card w-50">
     <div class="card-body">
-        <form method="post" action="/api/register">
+        <form>
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="username" class="form-control" id="username" aria-describedby="inputUsername">
@@ -50,16 +50,18 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" id="register" class="btn btn-primary">Sign Up</button>
+            
         </form>
+        <button id="register" class="btn btn-primary">Sign Up</button>
     </div>
 </div>
 
 <script>
 
-     $('#register').submit( function() {
+     $('#register').click( function() {
+         console.log('u got clicked!!')
         var newUser = { username: $('#username').val(), password: $('#password').val(), height_ft: $('#height_ft').val(), height_in: $('#height_in').val(), weight: $('#weight').val(), age: $('#age').val(), city: $('#city').val(), state: $('#state').val(), zip: $('#zip').val() };
-
+    console.log('THI SI THE NEW USER!! ', newUser)
         alert(newUser);
         $.ajax({  
             type: "POST",  
