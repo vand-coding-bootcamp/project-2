@@ -31,9 +31,9 @@ module.exports = function(app) {
         },
       ],
     }).then(function(data) {
-      console.log(data.dataValues.Cardios[0].dataValues)
+      console.log(data.dataValues.Cardios[0].dataValues);
       res.render("dash", {
-        data: data.dataValues
+        data: data.dataValues,
       });
     });
   });
