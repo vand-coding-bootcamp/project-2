@@ -6,18 +6,18 @@ module.exports = function(app) {
     db.User.findAll({
       include: [
         {
-          model: db.Cardio
+          model: db.Cardio,
         },
         {
-          model: db.Mind
+          model: db.Mind,
         },
         {
-          model: db.Friends
+          model: db.Friends,
         },
         {
-          model: db.Strength
-        }
-      ]
+          model: db.Strength,
+        },
+      ],
     }).then(function(data) {
       res.json(data);
     });
@@ -29,32 +29,52 @@ module.exports = function(app) {
       where: { id: req.params.id },
       include: [
         {
-          model: db.Cardio
+          model: db.Cardio,
         },
         {
-          model: db.Mind
+          model: db.Mind,
         },
         {
-          model: db.Friends
+          model: db.Friends,
         },
         {
-          model: db.Strength
-        }
-      ]
+          model: db.Strength,
+        },
+      ],
     }).then(function(dbUser) {
       res.json(dbUser); //When we switch over to handlebars, we need to change this line to res.render("dash", {dbUser:dbUser})
     });
   });
 
-  app.post("/api/friends", function(req, res) {
+  // app.get("/api/friends/:id", function(req, res) {
+  //   db.Friends.findAll({}).then(function(data) {
+  //     // for (var i = 0; i < db.User.length; i++) {
+  //     res.json({ data: data, id: req.params.id });
+  //   });
+  // });
+
+  // post friends for a specific user "add route" -  add friends to friends list
+  app.post("/api/friends/:id", function(req, res) {
     db.Friends.create({
       // friend is pulling from front end - be sure to add "friend" as the variable
       friends: req.body.friend,
       image: req.body.image,
       // change from body to user - body is just for testing purposes in postman until front end is ready
-      UserId: req.body.userId
+      UserId: req.body.userId,
     }).then(function(newFriend) {
       res.json(newFriend);
+    });
+  });
+
+  // get all friends for one user
+  app.get("/api/friends/:id", function(req, res) {
+    db.User.findOne({
+      where: { id: req.params.id },
+      include: [db.Friends],
+    }).then(async function(data) {
+      var friends = await db.Friends.findAll();
+      console.log(friends);
+      res.render("friends", { data: data, friends: friends });
     });
   });
 
@@ -77,7 +97,7 @@ module.exports = function(app) {
         start: req.body.start,
         end: req.body.start.end,
         // change from body to user - body is just for testing purposes in postman until front end is ready
-        UserId: req.body.userId
+        UserId: req.body.userId,
       }).then(function(newWorkout) {
         res.json(newWorkout);
       });
@@ -88,7 +108,7 @@ module.exports = function(app) {
         start: req.body.start,
         end: req.body.start.end,
         // change from body to user - body is just for testing purposes in postman until front end is ready
-        UserId: req.body.userId
+        UserId: req.body.userId,
       }).then(function(newWorkout) {
         res.json(newWorkout);
       });
@@ -99,7 +119,7 @@ module.exports = function(app) {
         start: req.body.start,
         end: req.body.start.end,
         // change from body to user - body is just for testing purposes in postman until front end is ready
-        UserId: req.body.userId
+        UserId: req.body.userId,
       }).then(function(newWorkout) {
         res.json(newWorkout);
       });
