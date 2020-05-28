@@ -61,7 +61,7 @@
      $('#register').click( function() {
          console.log('u got clicked!!')
         var newUser = { username: $('#username').val(), password: $('#password').val(), height_ft: $('#height_ft').val(), height_in: $('#height_in').val(), weight: $('#weight').val(), age: $('#age').val(), city: $('#city').val(), state: $('#state').val(), zip: $('#zip').val() };
-    console.log('THI SI THE NEW USER!! ', newUser)
+    console.log('THIS IS THE NEW USER!! ', newUser)
         alert(newUser);
         $.ajax({  
             type: "POST",  

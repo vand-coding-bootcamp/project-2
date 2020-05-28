@@ -18,78 +18,67 @@
 </nav>
 <div class="container">
     <!--  title for page    -->
-<div class="row">
-    <div class="col col-sm-2">  
-    <h1 id="add_wo">Add workout</h1>
-    <br>
-    <!--  instructions for page    -->
-    <p>Please fill out the form to add your workout</p>
-</div>
- <div class="row">
-    <div class="col-md-auto">   
-    <!--  Dropdown for workouts    -->
-   <div class="form-group">
-    <label for="exampleFormControlSelect1">Workout Type</label>
-    <select class="form-control rounded-pill"  id="wo_type">
-      <option></option>
-      <option>cardio</option>
-      <option>mind</option>
-      <option>strength</option>
-    </select>
-  </div>
-    <br>
-    <form>
-  <div class="form-group">
-    <label for="activityInput">Enter your activity</label>
-    <!--  Input form for activity    -->
-    <input type="text" class="rounded-pill form-control" id="activityInput" placeholder="What activity?">
-  </div>
-      <br>
-    
-{{!-- </form>
-    <br>
-      <form>
-        <label for="timeInput">Enter your start and end times</label>
-  <div class="row">
-    <div class="col">
-      <input type="text" class="rounded-pill form-control" placeholder="Start time">
-    </div>
-    <div class="col">
-      <input type="text" class="rounded-pill form-control" placeholder="End Time">
-    </div>
-  </div>
-</form> --}}
+    <div class="row">
+        <div class="col col-sm-2">
+            <h1 id="add_wo">Add workout</h1>
+            <br>
+            <!--  instructions for page    -->
+            <p>Please fill out the form to add your workout</p>
+        </div>
+        <div class="row">
+            <div class="col-md-auto">
+                <!--  Dropdown for workouts    -->
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Workout Type</label>
+                    <select class="form-control rounded-pill" id="wo_type">
+                        <option></option>
+                        <option>cardio</option>
+                        <option>mind</option>
+                        <option>strength</option>
+                    </select>
+                </div>
+                <br>
+                {{!-- form for activity information --}}
+                <form>
+                    <div class="form-group">
+                        <label for="activityInput">Enter your activity</label>
+                        <!--  Input form for activity    -->
+                        <input type="text" class="rounded-pill form-control" id="activityInput"
+                            placeholder="What activity?">
+                    </div>
+                    <br>
 
-<button id="timer-button" type="button">Start</button>
-      <br>
-<button id="timer-button-end" type="button">End</button>
-     <!--  Save button    -->
-    <button class="btn btn-info my-2 my-sm-0" id="add_workout" type="submit">Save</button>
-</div>
-
-  
-
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
-
-
-<script>
-$("#add_workout").on("click", function(){
-var data = {
-  cardio_act: $("#wo_type"
-}$("#workouts").val();
-console.log(workoutType);
-  $.post("/api/workout", {
-    workout_type: workoutType;
-  }).then(function(dataToPutOnPage) {
-    //append it to the page
-    console.log(dataToPutOnPage);
-    
-  })
-})
+                    {{!-- Timer --}}
+                    <button id="timer-button" type="button">Start</button>
+                    <br>
+                    <button id="timer-button-end" type="button">End</button>
+                    <!--  Save button    -->
+                    <button class="btn btn-info my-2 my-sm-0" id="add_workout" type="submit">Save</button>
+            </div>
 
 
 
 
-</script>
+            <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="/js/index.js"></script>
+
+
+            <script>
+                $("#add_workout").on("click", function () {
+                    var data = {
+                        cardio_act: $("#wo_type"}$("#workouts").val();
+                    console.log(workoutType);
+                    $.post("/api/workout", {
+                        workout_type: workoutType;
+                    }).then(function (dataToPutOnPage) {
+                        //append it to the page
+                        console.log(dataToPutOnPage);
+
+                    })
+                })
+
+
+
+
+            </script>
