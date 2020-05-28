@@ -1,0 +1,36 @@
+<h1> Welcome, {{data.username}}</h1>
+<h1></h1>
+
+
+
+{{#each data.Cardios}}
+<li class="list-group-item d-flex justify-content-between lh-condensed">
+    <h6>{{dataValues.cardio_act}}</h6>
+    <form action="/deleteOne/{{this.id}}" method="DELETE">
+        <input type="hidden" name="id" value="{{this.id}}">
+        <input type="hidden" name="devoured" value="1">
+        <button class="btn btn-sm btn-outline m-1 devour-btn float-right">Delete<i class="fas fa-utensils
+                          ml-2"></i>
+        </button>
+    </form>
+</li>
+{{/each }}
+
+<a href="/api/friends/{{data.id}}"><button id="friends">Friends</button></a>
+
+
+
+
+
+
+<script>
+    console.log('id form url', window.location.pathname)
+    var id = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1)
+    console.log('THis is our id!!! for the dash', id)
+
+    $.ajax({
+        url: '/api/dashboard/' + id
+    }).then(function (data) {
+        console.log('user for dash ?', data)
+    })
+</script>

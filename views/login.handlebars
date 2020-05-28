@@ -3,14 +3,39 @@
     <div class="card-body">
         <form>
             <div class="form-group">
-                <label for="inputUsername">Username</label>
-                <input type="email" class="form-control" id="inputUsername" aria-describedby="inputUsername">
+                <label for="username">Username</label>
+                <input type="username" class="form-control" id="username" aria-describedby="inputUsername">
             </div>
             <div class="form-group">
-                <label for="inputPassword">Password</label>
-                <input type="password" class="form-control" id="inputPassword">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password">
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
         </form>
+        <button id="login" class="btn btn-primary">Login</button>
     </div>
 </div>
+
+<script>
+
+     $('#login').click( function() {
+         console.log('u got clicked!!')
+        var user = { username: $('#username').val(), password: $('#password').val()};
+    console.log('THI SI THE NEW USER!! ', user)
+        alert(user);
+        $.ajax({  
+            type: "POST",  
+            url: "/api/login",  
+            data: user,  
+            success: function(dataFromBe){  
+                if (dataFromBe.success === true) {
+                     alert("success"); 
+                     window.location = '/dashboard/' + dataFromBe.id
+                } else {
+                    alert('incorrect username/password')
+                }
+                   
+            }  
+        });
+        return false;
+    });
+</script>

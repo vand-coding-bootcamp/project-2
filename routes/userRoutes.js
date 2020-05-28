@@ -6,7 +6,7 @@ var keys = require("../config/keys");
 // Get all users of app (working)
 module.exports = function(app) {
   app.post("/api/register", function(req, res) {
-    console.log("this route is working");
+    console.log("this route is working", req.body);
 
     db.User.findOne({
       where: {
@@ -19,8 +19,8 @@ module.exports = function(app) {
         var newUser = {
           username: req.body.username,
           password: req.body.password,
-          height: parseInt(req.body.height),
-          height_two: parseInt(req.body.height_two),
+          height_ft: parseInt(req.body.height_ft),
+          height_in: parseInt(req.body.height_in),
           weight: parseInt(req.body.weight),
           age: parseInt(req.body.age),
           image: req.body.image,
@@ -66,7 +66,7 @@ module.exports = function(app) {
             err,
             token
           ) {
-            res.json({ success: true, token: "Bearer " + token });
+            res.json({ success: true, token: "Bearer " + token, id: user.id });
           });
         } else {
           return res.status(400).json("Invalid Password");

@@ -3,36 +3,36 @@
     <div class="card-body">
         <form>
             <div class="form-group">
-                <label for="inputUsername">Username</label>
-                <input type="email" class="form-control" id="inputUsername" aria-describedby="inputUsername">
+                <label for="username">Username</label>
+                <input type="username" class="form-control" id="username" aria-describedby="inputUsername">
             </div>
             <div class="form-group">
-                <label for="inputPassword">Password</label>
-                <input type="password" class="form-control" id="inputPassword">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password">
             </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm">
-                        <label for="inputPassword">Feet</label>
-                        <input type="text" class="form-control" id="feet">
+                        <label for="height_ft">Feet</label>
+                        <input type="text" class="form-control" id="height_ft">
                     </div>
                     <div class="col-sm">
-                        <label for="inputPassword">Inches</label>
-                        <input type="text" class="form-control" id="inches">
+                        <label for="height_in">Inches</label>
+                        <input type="text" class="form-control" id="height_in">
                     </div>
                     <div class="col-sm">
-                        <label for="inputPassword">Weight</label>
-                        <input type="text" class="form-control" id="lbs">
+                        <label for="weight">Weight</label>
+                        <input type="text" class="form-control" id="weight">
                     </div>
                     <div class="col-sm">
-                        <label for="inputPassword">Age</label>
+                        <label for="age">Age</label>
                         <input type="text" class="form-control" id="age">
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <label for="userImage">Upload Profile Image</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                <label for="image">Upload Profile Image</label>
+                <input type="file" class="form-control-file" id="image">
             </div>
             <div class="form-group">
                 <div class="row">
@@ -46,11 +46,32 @@
                     </div>
                     <div class="col-sm">
                         <label for="zip">Zip Code</label>
-                        <input type="text" class="form-control" id="zipCode">
+                        <input type="text" class="form-control" id="zip">
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Sign Up</button>
+            
         </form>
+        <button id="register" class="btn btn-primary">Sign Up</button>
     </div>
 </div>
+
+<script>
+
+     $('#register').click( function() {
+         console.log('u got clicked!!')
+        var newUser = { username: $('#username').val(), password: $('#password').val(), height_ft: $('#height_ft').val(), height_in: $('#height_in').val(), weight: $('#weight').val(), age: $('#age').val(), city: $('#city').val(), state: $('#state').val(), zip: $('#zip').val() };
+    console.log('THI SI THE NEW USER!! ', newUser)
+        alert(newUser);
+        $.ajax({  
+            type: "POST",  
+            url: "/api/register",  
+            data: newUser,  
+            success: function(){  
+                alert("success");  
+            }  
+        });
+        return false;
+    });
+
+</script>
