@@ -59,6 +59,13 @@ module.exports = function(app) {
     });
   });
 
+  // Load workout page
+  app.get("/workout/:id", function(req, res) {
+    db.User.findAll({}).then(function() {
+      res.render("workout");
+    });
+  });
+
   // // Load the login page
   // app.get("/login", function(req, res) {
   //   db.User.findOne({ where: { id: req.params.id } }).then(function(

@@ -3,6 +3,8 @@ var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
+var $timerButton = $("#timer-button");
+var $timerButtonEnd = $("#timer-button-end");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -97,3 +99,24 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+// workout timer interval
+var timer;
+var startTime = 0;
+
+$timerButton.on("click", workoutTimer);
+$timerButtonEnd.on("click", stopTime);
+
+function workoutTimer() {
+  timer = setInterval(time, 1000);
+}
+
+function time() {
+  startTime++;
+  console.log(startTime);
+}
+
+function stopTime() {
+  clearInterval(timer);
+  console.log("stopped: " + startTime);
+}

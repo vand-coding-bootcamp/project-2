@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+
+<!--Nav-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+        aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Sweati</a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Friends <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <!--  title for page    -->
+<div class="row">
+    <div class="col col-sm-2">  
+    <h1 id="add_wo">Add workout</h1>
+    <br>
+    <!--  instructions for page    -->
+    <p>Please fill out the form to add your workout</p>
+</div>
+ <div class="row">
+    <div class="col-md-auto">   
+    <!--  Dropdown for workouts    -->
+   <div class="form-group">
+    <label for="exampleFormControlSelect1">Workout Type</label>
+    <select class="form-control rounded-pill"  id="wo_type">
+      <option></option>
+      <option>cardio</option>
+      <option>mind</option>
+      <option>strength</option>
+    </select>
+  </div>
+    <br>
+    <form>
+  <div class="form-group">
+    <label for="activityInput">Enter your activity</label>
+    <!--  Input form for activity    -->
+    <input type="text" class="rounded-pill form-control" id="activityInput" placeholder="What activity?">
+  </div>
+      <br>
+    
+{{!-- </form>
+    <br>
+      <form>
+        <label for="timeInput">Enter your start and end times</label>
+  <div class="row">
+    <div class="col">
+      <input type="text" class="rounded-pill form-control" placeholder="Start time">
+    </div>
+    <div class="col">
+      <input type="text" class="rounded-pill form-control" placeholder="End Time">
+    </div>
+  </div>
+</form> --}}
+
+<button id="timer-button" type="button">Start</button>
+      <br>
+<button id="timer-button-end" type="button">End</button>
+     <!--  Save button    -->
+    <button class="btn btn-info my-2 my-sm-0" id="add_workout" type="submit">Save</button>
+</div>
+
+  
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+
+
+<script>
+$("#add_workout").on("click", function(){
+var data = {
+  cardio_act: $("#wo_type"
+}$("#workouts").val();
+console.log(workoutType);
+  $.post("/api/workout", {
+    workout_type: workoutType;
+  }).then(function(dataToPutOnPage) {
+    //append it to the page
+    console.log(dataToPutOnPage);
+    
+  })
+})
+
+
+
+
+</script>
