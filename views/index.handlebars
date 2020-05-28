@@ -4,12 +4,12 @@
     aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">Sweati</a>
+  <a href="#"><img src="/../public/sweati-logo.png"></a>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Friends <span class="sr-only">(current)</span></a>
+        {{!-- <a class="nav-link" href="#">Friends <span class="sr-only">(current)</span></a> --}}
       </li>
 
     </ul>
@@ -23,11 +23,32 @@
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <a href="/login"><button class="btn btn-outline-success my-2 my-sm-0" id="login" type="submit">Login</button></a>
-        <a href="/register"><button class="btn btn-outline-success my-2 my-sm-0" id="signUp" type="submit">Sign Up</button></a> 
-    
+        <h1 class="center">{{msg}} <span class="app-name">Sweati.</span></h1>
+        <h4 class="center">Workouts you will love and share with your friends and family.</h4>
+
+
+<!--Register and Login Cards -->
+        <div class="row register-cards">
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body box">
+                <h5 class="card-title">New user? Register here.</h5>
+                <a href="/register"><button class="btn my-2 my-sm-0 btn-card" id="signUp" type="submit">Sign
+                    Up ></button></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body box">
+                <h5 class="card-title">Already have an account?</h5>
+                <a href="/login"><button class="btn my-2 my-sm-0 btn-card" id="login"
+                    type="submit">Login ></button></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -41,7 +62,7 @@
 
   $.ajax({
     url: '/workout'
-  }).then(function(dataToPutOnPage) {
+  }).then(function (dataToPutOnPage) {
     //append it to the page
   })
 
