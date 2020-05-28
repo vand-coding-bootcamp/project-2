@@ -5,14 +5,36 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     db.User.findAll({}).then(function(dATA) {
       res.render("index", {
-        msg: "Let's get Sweati."
+        msg: "Let's get Sweati.",
       });
     });
   });
 
+  // Load Dashboard page
   app.get("/dashboard/:id", function(req, res) {
-    res.render("dash", {
-      msg: "Let's get Sweati."
+    db.User.findOne({
+      where: {
+        id: req.params.id,
+      },
+      include: [
+        {
+          model: db.Cardio,
+        },
+        {
+          model: db.Mind,
+        },
+        {
+          model: db.Friends,
+        },
+        {
+          model: db.Strength,
+        },
+      ],
+    }).then(function(data) {
+      console.log(data.dataValues.Cardios[0].dataValues)
+      res.render("dash", {
+        data: data.dataValues
+      });
     });
   });
 

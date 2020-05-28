@@ -66,7 +66,7 @@ module.exports = function(app) {
             err,
             token
           ) {
-            res.json({ success: true, token: "Bearer " + token , id: user.id});
+            res.json({ success: true, token: "Bearer " + token, id: user.id });
           });
         } else {
           return res.status(400).json("Invalid Password");
