@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "Bob@@1#er",
+    "password": "MG11181990",
     "database": "sweati_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "MG11181990",
     "database": "test_db",
     "host": "localhost",
     "dialect": "mysql",
