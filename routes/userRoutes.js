@@ -3,7 +3,7 @@ var bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
 var keys = require("../config/keys");
 
-// Get all users of app (working)
+// Registration form entry for the db
 module.exports = function(app) {
   app.post("/api/register", function(req, res) {
     console.log("this route is working", req.body);
@@ -28,6 +28,7 @@ module.exports = function(app) {
           state: req.body.state,
           zip: req.body.zip
         };
+        // Encryption code for the database
         bcrypt.genSalt(10, function(err, salt) {
           bcrypt.hash(newUser.password, salt, function(err, hash) {
             if (err) {
@@ -46,7 +47,7 @@ module.exports = function(app) {
       }
     });
   });
-
+  // Login page
   app.post("/api/login", function(req, res) {
     db.User.findOne({
       where: {
@@ -74,7 +75,7 @@ module.exports = function(app) {
       });
     });
   });
-
+  // Logout code
   app.post("/api/logout", function(req, res) {
     req.logout();
     res.redirect("/");

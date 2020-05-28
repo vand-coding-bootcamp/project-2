@@ -6,18 +6,18 @@ module.exports = function(app) {
     db.User.findAll({
       include: [
         {
-          model: db.Cardio,
+          model: db.Cardio
         },
         {
-          model: db.Mind,
+          model: db.Mind
         },
         {
-          model: db.Friends,
+          model: db.Friends
         },
         {
-          model: db.Strength,
-        },
-      ],
+          model: db.Strength
+        }
+      ]
     }).then(function(data) {
       res.json(data);
     });
@@ -45,13 +45,6 @@ module.exports = function(app) {
       res.json(dbUser); //When we switch over to handlebars, we need to change this line to res.render("dash", {dbUser:dbUser})
     });
   });
-
-  // app.get("/api/friends/:id", function(req, res) {
-  //   db.Friends.findAll({}).then(function(data) {
-  //     // for (var i = 0; i < db.User.length; i++) {
-  //     res.json({ data: data, id: req.params.id });
-  //   });
-  // });
 
   // post friends for a specific user "add route" -  add friends to friends list
   app.post("/api/friends/:id", function(req, res) {
@@ -89,7 +82,7 @@ module.exports = function(app) {
 
   app.post("/api/workout", function(req, res) {
     console.log("we should save the body to the database", req.body);
-
+    // Code for pushing data to specific tables
     if (req.body.workout_type === "cardio") {
       db.Cardio.create({
         // friend is pulling from front end - be sure to add "friend" as the variable

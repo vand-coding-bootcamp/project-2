@@ -66,17 +66,6 @@ module.exports = function(app) {
     });
   });
 
-  // // Load the login page
-  // app.get("/login", function(req, res) {
-  //   db.User.findOne({ where: { id: req.params.id } }).then(function(
-  //     dbExample
-  //   ) {
-  //     res.render("login", {
-  //       example: dbExample
-  //     });
-  //   });
-  // });
-
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
