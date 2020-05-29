@@ -6,6 +6,7 @@ var Sequelize = require("sequelize");
 var basename = path.basename(module.filename);
 var env = process.env.NODE_ENV || "development";
 var config = require(__dirname + "/../config/config.json")[env];
+var mysql = require('mysql');
 var db = {};
 
 if (config.use_env_variable) {
@@ -18,6 +19,18 @@ if (config.use_env_variable) {
     config
   );
 }
+// Connection to Heroku
+if (process.env.JAWSDB_URL) {
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+  connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'Rx4S5d94&',
+    database: sweati_db
+  });
+};
+connection.connect();
 
 fs.readdirSync(__dirname)
   .filter(function(file) {
@@ -42,3 +55,4 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+module.exports = connection;
