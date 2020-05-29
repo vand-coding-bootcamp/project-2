@@ -18,6 +18,7 @@
 </nav>
 <div class="container">
     <!--  title for page    -->
+    <input hidden id="userID" value="{{data.userID}}">
     <div class="row">
         <div class="col col-sm-2">
             <h1 id="add_wo">Add workout</h1>
@@ -70,13 +71,16 @@
                 $("#add_workout").on("click", function () {
                     var genre = document.getElementById('wo_type').value;
                     var userAct = document.getElementById('activityInput').value;
-
+                    var usrID = document.getElementById('userID').value;
                     var woData = {
                         workout_type: genre,
-                        activity: userAct
+                        activity: userAct,
+                        start: realStartTime,
+                        end: realEndTime,
+                        userId: 1
                     }
                     console.log(genre);
-                    $.post("/api/workout", woData
+                    $.post("/api/workout/1", woData
                     ).then(function (dataToPutOnPage) {
                         //append it to the page
                         console.log(dataToPutOnPage);

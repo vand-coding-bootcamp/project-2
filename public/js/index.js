@@ -106,13 +106,13 @@ var startTime = 0;
 var realStartTime = 0;
 var realEndTime = 0;
 
-
 $timerButton.on("click", workoutTimer);
 $timerButtonEnd.on("click", stopTime);
 
 function workoutTimer() {
   timer = setInterval(time, 1000);
-  realStartTime = Date.now();
+  var d = new Date().toLocaleString();
+  realStartTime = d.valueOf();
 }
 
 function time() {
@@ -123,10 +123,10 @@ function time() {
 
 function stopTime() {
   clearInterval(timer);
-  realEndTime = Date.now();
+  var d = new Date().toLocaleString();
+  realEndTime = d.valueOf();
   console.log("stopped: " + startTime);
 }
-
 
 // time converter
 function timeConverter(t) {
