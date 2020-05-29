@@ -80,7 +80,7 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/workout", function(req, res) {
+  app.post("/api/workout/:id", function(req, res) {
     console.log("we should save the body to the database", req.body);
     // Code for pushing data to specific tables
     if (req.body.workout_type === "cardio") {
@@ -88,7 +88,7 @@ module.exports = function(app) {
         // friend is pulling from front end - be sure to add "friend" as the variable
         cardio_act: req.body.activity,
         start: req.body.start,
-        end: req.body.start.end,
+        end: req.body.end,
         // change from body to user - body is just for testing purposes in postman until front end is ready
         UserId: req.body.userId,
       }).then(function(newWorkout) {
@@ -99,7 +99,7 @@ module.exports = function(app) {
         // friend is pulling from front end - be sure to add "friend" as the variable
         mind_act: req.body.activity,
         start: req.body.start,
-        end: req.body.start.end,
+        end: req.body.end,
         // change from body to user - body is just for testing purposes in postman until front end is ready
         UserId: req.body.userId,
       }).then(function(newWorkout) {
@@ -110,7 +110,7 @@ module.exports = function(app) {
         // friend is pulling from front end - be sure to add "friend" as the variable
         strength_act: req.body.activity,
         start: req.body.start,
-        end: req.body.start.end,
+        end: req.body.end,
         // change from body to user - body is just for testing purposes in postman until front end is ready
         UserId: req.body.userId,
       }).then(function(newWorkout) {

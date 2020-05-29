@@ -11,25 +11,25 @@ var API = {
   saveExample: function(example) {
     return $.ajax({
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
       type: "POST",
       url: "api/examples",
-      data: JSON.stringify(example),
+      data: JSON.stringify(example)
     });
   },
   getExamples: function() {
     return $.ajax({
       url: "api/examples",
-      type: "GET",
+      type: "GET"
     });
   },
   deleteExample: function(id) {
     return $.ajax({
       url: "api/examples/" + id,
-      type: "DELETE",
+      type: "DELETE"
     });
-  },
+  }
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
@@ -43,7 +43,7 @@ var refreshExamples = function() {
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
-          "data-id": example.id,
+          "data-id": example.id
         })
         .append($a);
 
@@ -68,7 +68,7 @@ var handleFormSubmit = function(event) {
 
   var example = {
     text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim(),
+    description: $exampleDescription.val().trim()
   };
 
   if (!(example.text && example.description)) {
@@ -106,13 +106,13 @@ var startTime = 0;
 var realStartTime = 0;
 var realEndTime = 0;
 
-
 $timerButton.on("click", workoutTimer);
 $timerButtonEnd.on("click", stopTime);
 
 function workoutTimer() {
   timer = setInterval(time, 1000);
-  realStartTime = Date.now();
+  var d = new Date().toLocaleString();
+  realStartTime = d.valueOf();
 }
 
 function time() {
@@ -123,10 +123,10 @@ function time() {
 
 function stopTime() {
   clearInterval(timer);
-  realEndTime = Date.now();
+  var d = new Date().toLocaleString();
+  realEndTime = d.valueOf();
   console.log("stopped: " + startTime);
 }
-
 
 // time converter
 function timeConverter(t) {
