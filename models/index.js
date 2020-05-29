@@ -6,7 +6,7 @@ var Sequelize = require("sequelize");
 var basename = path.basename(module.filename);
 var env = process.env.NODE_ENV || "development";
 var config = require(__dirname + "/../config/config.json")[env];
-var mysql = require('mysql');
+// var mysql = require('mysql');
 var db = {};
 
 if (config.use_env_variable) {
@@ -26,7 +26,7 @@ if (config.use_env_variable) {
 //   connection = mysql.createConnection({
 //     host: 'localhost',
 //     user: 'root',
-//     password: 'Bob@@1#er',
+//     password: 'Rx4S5d94&',
 //     database: 'sweati_db'
 //   });
 // };
