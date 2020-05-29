@@ -12,7 +12,7 @@ The purpose of Sweati is to keep track of your cardio, mindfulness, and strength
 
 ## Links
 * Github repo: https://github.com/vand-coding-bootcamp/sweati
-* Heroku link: TBD
+* Heroku link: https://sweati-fitness-app.herokuapp.com
 
 ## Code Explanation
 The `server.js` file sets up:
