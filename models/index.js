@@ -27,7 +27,7 @@ if (process.env.JAWSDB_URL) {
     host: 'localhost',
     user: 'root',
     password: 'Rx4S5d94&',
-    database: sweati_db
+    database: 'sweati_db'
   });
 };
 connection.connect();
