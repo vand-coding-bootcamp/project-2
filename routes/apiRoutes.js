@@ -86,7 +86,7 @@ module.exports = function(app) {
     if (req.body.workout_type === "cardio") {
       db.Cardio.create({
         // friend is pulling from front end - be sure to add "friend" as the variable
-        cardio_act: req.body.cardio_act,
+        cardio_act: req.body.activity,
         start: req.body.start,
         end: req.body.start.end,
         // change from body to user - body is just for testing purposes in postman until front end is ready
@@ -97,7 +97,7 @@ module.exports = function(app) {
     } else if (req.body.workout_type === "mind") {
       db.Mind.create({
         // friend is pulling from front end - be sure to add "friend" as the variable
-        mind_act: req.body.mind_act,
+        mind_act: req.body.activity,
         start: req.body.start,
         end: req.body.start.end,
         // change from body to user - body is just for testing purposes in postman until front end is ready
@@ -108,7 +108,7 @@ module.exports = function(app) {
     } else if (req.body.workout_type === "strength") {
       db.Strength.create({
         // friend is pulling from front end - be sure to add "friend" as the variable
-        strength_act: req.body.strength_act,
+        strength_act: req.body.activity,
         start: req.body.start,
         end: req.body.start.end,
         // change from body to user - body is just for testing purposes in postman until front end is ready

@@ -49,6 +49,8 @@
                     <br>
 
                     {{!-- Timer --}}
+                    <div id="display">00:00</div>
+                    <br>
                     <button id="timer-button" type="button">Start</button>
                     <br>
                     <button id="timer-button-end" type="button">End</button>
@@ -66,19 +68,18 @@
 
             <script>
                 $("#add_workout").on("click", function () {
-                    var data = {
-                        cardio_act: $("#wo_type"}$("#workouts").val();
-                    console.log(workoutType);
-                    $.post("/api/workout", {
-                        workout_type: workoutType;
-                    }).then(function (dataToPutOnPage) {
+                    var genre = document.getElementById('wo_type').value;
+                    var userAct = document.getElementById('activityInput').value;
+
+                    var woData = {
+                        workout_type: genre,
+                        activity: userAct
+                    }
+                    console.log(genre);
+                    $.post("/api/workout", woData
+                    ).then(function (dataToPutOnPage) {
                         //append it to the page
                         console.log(dataToPutOnPage);
-
                     })
                 })
-
-
-
-
             </script>
