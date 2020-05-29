@@ -1,41 +1,48 @@
-<!--Login Form-->
-<div class="card w-50">
-    <div class="card-body">
-        <form>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="username" class="form-control" id="username" aria-describedby="inputUsername">
+<!--  Login Form -->
+<div class="container h-100 wrapper">
+    <div class="row justify-content-between">
+        <div class="col col-sm-2 login-intro my-auto">
+            <h2>Login</h2>
+            <p>Please enter your username and password to login.</p>
+        </div>
+        
+            <div class="col-sm-6 login-form my-auto">
+                <form>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="username" class="form-control form-fields" id="username" aria-describedby="inputUsername" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control form-fields" id="password" placeholder="Password">
+                    </div>
+                </form>
+                <button id="login" class="btn btn-outline-success">Login</button>
             </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password">
-            </div>
-        </form>
-        <button id="login" class="btn btn-primary">Login</button>
-    </div>
-</div>
 
-<script>
-    {{!-- login code for on click event --}}
-     $('#login').click( function() {
-         console.log('u got clicked!!')
-        var user = { username: $('#username').val(), password: $('#password').val()};
-    console.log('THI SI THE NEW USER!! ', user)
-        alert(user);
-        $.ajax({  
-            type: "POST",  
-            url: "/api/login",  
-            data: user,  
-            success: function(dataFromBe){  
-                if (dataFromBe.success === true) {
-                     alert("success"); 
-                     window.location = '/dashboard/' + dataFromBe.id
-                } else {
-                    alert('incorrect username/password')
-                }
-                   
-            }  
-        });
-        return false;
-    });
-</script>
+        </div>
+
+
+        <script>
+            $('#login').click(function () {
+                console.log('u got clicked!!')
+                var user = { username: $('#username').val(), password: $('#password').val() };
+                console.log('THI SI THE NEW USER!! ', user)
+                alert(user);
+                $.ajax({
+                    type: "POST",
+                    url: "/api/login",
+                    data: user,
+                    success: function (dataFromBe) {
+                        if (dataFromBe.success === true) {
+                            alert("success");
+                            window.location = '/dashboard/' + dataFromBe.id
+                        } else {
+                            alert('incorrect username/password')
+                        }
+
+                    }
+                });
+                return false;
+            });
+        </script>

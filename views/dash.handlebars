@@ -1,33 +1,85 @@
-<h1> Welcome, {{data.username}}</h1>
-<h1></h1>
+<div id="dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 dash">
+                <h2 class="col-sm-9">Welcome, {{data.username}}</h2>
+
+                {{!-- Friends button --}}
+                <a href="/api/friends/{{data.id}}"><button class="btn-outline-success" id="friends">Friends</button></a>
+                {{!-- Workout button --}}
+                <a href="/workout/{{data.id}}"><button class="btn-outline-success" id="workout">Workout</button></a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <!--Workout History Table-->
+        <div class="container">
+            <h2>Workout History</h2>
+            <div class="row">
+                <div class="col-sm">
+                    <h6>Type</h6>
+                </div>
+                <div class="col-sm">
+                    <h6>Activity</h6>
+                </div>
+                <div class="col-sm">
+                    <h6>Start Time</h6>
+                </div>
+                <div class="col-sm">
+                    <h6>End Time</h6>
+                </div>
+                <div class="col-sm">
+                    <h6>Edit</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="container workout-card">
+            <div class="row">
+                <div class="col-sm">
+                    <h6>{{this.workout_type}}</h6>
+                </div>
+                <div class="col-sm">
+                    <h6>{{this.cardio_act}}</h6>
+                </div>
+                <div class="col-sm">
+                    <h6>{{this.start_time}}</h6>
+                </div>
+                <div class="col-sm">
+                    <h6>{{this.end_time}}</h6>
+                </div>
+                <div class="col-sm">
+                    <button class="btn">Delete<i class="fas fa-utensilsml-2"></i></button>
+                </div>
+            </div>
+        </div>
 
 
-
-{{#each data.Cardios}}
-<li class="list-group-item d-flex justify-content-between lh-condensed">
-    <h6>{{dataValues.cardio_act}}</h6>
-    <form action="/deleteOne/{{this.id}}" method="DELETE">
-        <input type="hidden" name="id" value="{{this.id}}">
-        <input type="hidden" name="devoured" value="1">
-        <button class="btn btn-sm btn-outline m-1 devour-btn float-right">Delete<i class="fas fa-utensils
+        {{#each data.Cardios}}
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <h6>{{dataValues.cardio_act}}</h6>
+            <form action="/deleteOne/{{this.id}}" method="DELETE">
+                <input type="hidden" name="id" value="{{this.id}}">
+                <input type="hidden" name="devoured" value="1">
+                <button class="btn btn-sm btn-outline m-1 devour-btn float-right">Delete<i class="fas fa-utensils
                           ml-2"></i>
-        </button>
-    </form>
-</li>
-{{/each }}
-{{!-- Friends button --}}
-<a href="/api/friends/{{data.id}}"><button id="friends">Friends</button></a>
-{{!-- Workout button --}}
-<a href="/workout/{{data.id}}"><button id="workout">Workout</button></a>
+                </button>
+            </form>
+        </li>
+        {{/each }}
 
-<script>
-    console.log('id form url', window.location.pathname)
-    var id = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1)
-    console.log('THis is our id!!! for the dash', id)
 
-    $.ajax({
-        url: '/api/dashboard/' + id
-    }).then(function (data) {
-        console.log('user for dash ?', data)
-    })
-</script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="/js/index.js"></script>
+
+        <script>
+            console.log('id form url', window.location.pathname)
+            var id = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1)
+            console.log('THis is our id!!! for the dash', id)
+
+            $.ajax({
+                url: '/api/dashboard/' + id
+            }).then(function (data) {
+                console.log('user for dash ?', data)
+            })
+        </script>

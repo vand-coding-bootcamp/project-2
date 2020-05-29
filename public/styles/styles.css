@@ -2,8 +2,11 @@ body {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 
-.navbar{
-  padding: 1rem 1rem;
+/*/////////////////////////
+Fonts
+/////////////////////////*/
+a:hover {
+  text-decoration: none;
 }
 
 h1 {
@@ -11,7 +14,17 @@ h1 {
   font-weight: 600;
 }
 
-.app-name{
+h2 {
+  color: #8bc2fa;
+  font-weight: 600;
+  font-size:45px;
+}
+
+.navbar {
+  padding: 1rem 1rem;
+}
+
+.app-name {
   color: #8bc2fa;
 }
 
@@ -23,24 +36,26 @@ h1 {
   line-height: 2.5;
 }
 
+/*/////////////////////////
+Homepage
+/////////////////////////*/
+
 #home {
   margin-top: 60px;
 }
 
 .register-cards {
   margin-top: 60px;
-  
 }
 
-.card{
+.card {
   background: #f5f5f5;
   border: none;
 }
 .card:hover {
   background: white;
   box-shadow: 1px 8px 20px #d7d7d7;
-  -webkit-transition: box-shadow .1s ease-in;
-  
+  -webkit-transition: box-shadow 0.1s ease-in;
 }
 
 .card-title,
@@ -54,6 +69,32 @@ h1 {
   padding: 30px;
   min-height: 220px;
 }
+
+.btn-card {
+  color: #8bc2fa;
+  display: flex;
+  margin: 0 auto;
+  font-size: 32px;
+  background: transparent;
+}
+
+.workout-card {
+  border: 2px solid #8bc2fa;
+  border-radius: 25px;
+  margin-top: 20px;
+}
+
+
+/*/////////////////////////
+Dashboard
+/////////////////////////*/
+.dash {
+  display: flex;
+}
+
+/*/////////////////////////
+Buttons
+/////////////////////////*/
 
 .btn-outline-success {
   color: #8bc2fa;
@@ -69,14 +110,28 @@ h1 {
   border: none;
 }
 
-.btn-card {
-  color: #8bc2fa;
+
+/*/////////////////////////
+Forms
+/////////////////////////*/
+.dash {
   display: flex;
-  margin: 0 auto;
-  font-size: 32px;
-  background: transparent;
 }
 
-a:hover{
-  text-decoration: none;
+.form-fields {
+  border: 2px solid #8bc2fa;
+  height: 55px;
+  border-radius: 25px;
+}
+
+.login-form{
+  margin-right:160px;
+}
+.login-intro{
+  margin-left:160px;
+}
+
+.wrapper {
+  margin-top:15%;
+  margin-bottom:15%;
 }
