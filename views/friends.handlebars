@@ -9,12 +9,12 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="/friends">Friends <span class="sr-only"></span></a>
+        <a href="/workout/{{friends.id}}"><button class="nav-link">Workout <span class="sr-only"></button></a>
       </li>
 
     </ul>
-    <a href="/dashboard"><button class="btn btn-outline-success my-2 my-sm-0" id="dashboard" type="submit">Logout</button></a>
-    <a href="/logout"><button class="btn btn-outline-success my-2 my-sm-0" id="logout" type="submit">Dashboard</button></a> 
+    <a href="/dashboard"><button class="btn btn-outline-success my-2 my-sm-0" id="dashboard" type="submit">Dashboard</button></a>
+    <a href="/api/logout"><button class="btn btn-outline-success my-2 my-sm-0" id="logout" type="submit">Logout</button></a> 
 
   </div>
 </nav>
@@ -28,6 +28,7 @@
         {{#each friends}} 
         <li>
             {{dataValues.friends}}
+            <button id="add-friend" data-friends="{{dataValues.friends}}" data-image="{{dataValues.image}}">Add</button>
         </li>
         {{/each}}
       </div>
@@ -52,6 +53,19 @@
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+<script>
+  $("#add-friend").on("click", function(){
+    var friend= {
+      friends: $("#add-friend").attr("data-friends"),
+      image: $("#add-friend").attr("data-image"),
+      userId: parseInt(/[^/]*$/.exec(window.location.href)[0])
+    }
+    $.post("/api/friends", friend).then(function(result){
+      if (result.statusCode === 201){
+        location.reload();
+      }
+    })
+  })
+</script>
 
 
