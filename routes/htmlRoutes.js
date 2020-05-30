@@ -5,7 +5,7 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     db.User.findAll({}).then(function(dATA) {
       res.render("index", {
-        msg: "Let's get",
+        msg: "Let's get"
       });
     });
   });
@@ -23,13 +23,11 @@ module.exports = function(app) {
         {
           model: db.Mind
         },
-
         {
           model: db.Strength
         }
       ]
     }).then(function(data) {
-      console.log(data.dataValues);
       res.render("dash", {
         data: data.dataValues
       });

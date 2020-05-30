@@ -24,7 +24,7 @@
                         <th scope="col">Activity</th>
                         <th scope="col">Start</th>
                         <th scope="col">End</th>
-                        <th scope="col">Edit</th>
+                        {{!-- <th scope="col">Edit</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -33,9 +33,9 @@
                         <td>{{dataValues.cardio_act}}</td>
                         <td>{{dataValues.start}}</td>
                         <td>{{dataValues.end}}</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">Remove</button>
-                        </td>
+                        {{!-- <td>
+                            <button data-type="cardio" type="button" class="btn btn-danger">Remove</button>
+                        </td> --}}
                     </tr>
                     {{/each }}
                 </tbody>
@@ -48,7 +48,7 @@
                         <th scope="col">Activity</th>
                         <th scope="col">Start</th>
                         <th scope="col">End</th>
-                        <th scope="col">Edit</th>
+                        {{!-- <th scope="col">Edit</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -57,9 +57,9 @@
                         <td>{{dataValues.mind_act}}</td>
                         <td>{{dataValues.start}}</td>
                         <td>{{dataValues.end}}</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">Remove</button>
-                        </td>
+                        {{!-- <td>
+                            <button data-type="mind" type="button" class="btn btn-danger">Remove</button>
+                        </td> --}}
                     </tr>
                     {{/each }}
                 </tbody>
@@ -72,7 +72,7 @@
                         <th scope="col">Activity</th>
                         <th scope="col">Start</th>
                         <th scope="col">End</th>
-                        <th scope="col">Edit</th>
+                        {{!-- <th scope="col">Edit</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -81,9 +81,9 @@
                         <td>{{dataValues.strength_act}}</td>
                         <td>{{dataValues.start}}</td>
                         <td>{{dataValues.end}}</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">Remove</button>
-                        </td>
+                        {{!-- <td>
+                            <button data-type="strength" type="button" class="btn btn-danger">Remove</button>
+                        </td> --}}
                     </tr>
                     {{/each }}
                 </tbody>
@@ -95,14 +95,21 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="/js/index.js"></script>
 
-    <script>
+{{!-- This is for the future in case we want to create a 'remove' button --}}
+
+    {{!-- <script>
         console.log('id form url', window.location.pathname)
         var id = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1)
-        console.log('THis is our id!!! for the dash', id)
-
-        $.ajax({
-            url: '/api/dashboard/' + id
-        }).then(function (data) {
-            console.log('user for dash ?', data)
+        console.log('This is our id!!! for the dash', id)
+        $(document).on("click", "button", function () {
+            console.log("I've been clicked");
+            var dataType = $(this).attr("data-type")
+            $.post("/api/workout/" + id, {
+                workout_type: dataType
+            }).then(function (res) {
+                if (res.statusCode === 204) {
+                    location.reload();
+                }
+            });
         })
-    </script>
+    </script> --}}
