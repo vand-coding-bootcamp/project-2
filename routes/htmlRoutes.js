@@ -53,11 +53,12 @@ module.exports = function(app) {
   });
 
   // Load friends page
-  app.get("/friends/:id", function(req, res) {
-    db.User.findAll({}).then(function() {
-      res.render("friends");
-    });
-  });
+  // app.get("/friends/:id", function(req, res) {
+  //   console.log("this:", req.params.id);
+  //   db.User.findAll({}).then(function() {
+  //     res.render("friends",{id: req.params.id});
+  //   });
+  // });
 
   // Load workout page
   app.get("/workout/:id", function(req, res) {

@@ -1,87 +1,89 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-
 <!--Nav-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
-        aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="#">Sweati</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+    aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a href="/"><img class="logo" src="/assets/images/sweati-logo@2x.png"></a>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Friends <span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
-    </div>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        {{!-- <a class="nav-link" href="#">Friends <span class="sr-only">(current)</span></a> --}}
+      </li>
+
+    </ul>
+    <a href="/dashboard/{{data.id}}"><button class="btn btn-outline-success my-2 my-sm-0 nav-btn">My Dashboard</button></a>
+    <a class="nav-link" href="#">My Friends <span class="sr-only">(current)</span></a>
+
+  </div>
 </nav>
-<div class="container">
-    <!--  title for page    -->
+
+<!--  title for page    -->
+
+<div class="container h-100 wrapper">
     <input hidden id="userID" value="{{data.userID}}">
-    <div class="row">
-        <div class="col col-sm-2">
-            <h1 id="add_wo">Add workout</h1>
-            <br>
-            <!--  instructions for page    -->
-            <p>Please fill out the form to add your workout</p>
+    <div class="row justify-content-between">
+        <div class="col col-sm-2 login-intro my-auto">
+            <h2>Add Workout</h2>
+            <p>Please fill out the form to add your workout.</p>
         </div>
-        <div class="row">
-            <div class="col-md-auto">
-                <!--  Dropdown for workouts    -->
+
+        <div class="col-sm-6 login-form my-auto">
+            <form>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Workout Type</label>
-                    <select class="form-control rounded-pill" id="wo_type">
+                    <select class="form-control form-fields" id="wo_type">
                         <option></option>
                         <option>cardio</option>
                         <option>mind</option>
                         <option>strength</option>
                     </select>
                 </div>
-                <br>
-                {{!-- form for activity information --}}
-                <form>
-                    <div class="form-group">
-                        <label for="activityInput">Enter your activity</label>
-                        <!--  Input form for activity    -->
-                        <input type="text" class="rounded-pill form-control" id="activityInput"
-                            placeholder="What activity?">
-                    </div>
-                    <br>
-
-                    {{!-- Timer --}}
-                    <div id="display">00:00</div>
-                    <br>
-                    <button id="timer-button" type="button">Start</button>
-                    <br>
-                    <button id="timer-button-end" type="button">End</button>
-                    <!--  Save button    -->
-                    <button class="btn btn-info my-2 my-sm-0" id="add_workout" type="submit">Save</button>
+                <div class="form-group">
+                    <label for="activityInput">Enter your activity</label>
+                    <!--  Input form for activity    -->
+                    <input type="text" class="form-fields form-control" id="activityInput" placeholder="What activity?">
+                </div>
+            </form>
+            <div class="timer">
+            <div id="display"><h2>00:00</h2></div>
+            <button class="btn-outline-success" id="timer-button" type="button">Start</button>
+            <button class="btn-outline-success" id="timer-button-end" type="button">End</button>
             </div>
+            <!--  Save button    -->
+            <button class="btn btn-info my-2 my-sm-0 btn-outline-success s" id="add_workout" type="submit">Save</button>
+        </div>
+
+    </div>
 
 
-            <script type="text/javascript"
-                src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            <script src="/js/index.js"></script>
 
 
-            <script>
-                $("#add_workout").on("click", function () {
-                    var genre = document.getElementById('wo_type').value;
-                    var userAct = document.getElementById('activityInput').value;
-                    var usrID = document.getElementById('userID').value;
-                    var woData = {
-                        workout_type: genre,
-                        activity: userAct,
-                        start: realStartTime,
-                        end: realEndTime,
-                        userId: {{data.id}}
+
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/js/index.js"></script>
+
+
+    <script>
+        $("#add_workout").on("click", function () {
+            var genre = document.getElementById('wo_type').value;
+            var userAct = document.getElementById('activityInput').value;
+            var usrID = document.getElementById('userID').value;
+            var woData = {
+                workout_type: genre,
+                activity: userAct,
+                start: realStartTime,
+                end: realEndTime,
+                userId: {{ data.id }}
                     }
-                    console.log(genre);
-                    $.post("/api/workout/1", woData
-                    ).then(function (dataToPutOnPage) {
-                        //append it to the page
-                        console.log(dataToPutOnPage);
-                    })
+            console.log(genre);
+        $.post("/api/workout/:id", woData
+        ).then(function (dataToPutOnPage) {
+            //append it to the page
+            console.log(dataToPutOnPage);
+        })
                 })
-            </script>
+    </script>
