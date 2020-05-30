@@ -5,7 +5,7 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     db.User.findAll({}).then(function(dATA) {
       res.render("index", {
-        msg: "Let's get"
+        msg: "Let's get",
       });
     });
   });
@@ -23,15 +23,13 @@ module.exports = function(app) {
         {
           model: db.Mind
         },
-        {
-          model: db.Friends
-        },
+
         {
           model: db.Strength
         }
       ]
     }).then(function(data) {
-      // console.log(data.dataValues.Cardios[0].dataValues);
+      console.log(data.dataValues);
       res.render("dash", {
         data: data.dataValues
       });
@@ -52,21 +50,13 @@ module.exports = function(app) {
     });
   });
 
-  // Load friends page
-  // app.get("/friends/:id", function(req, res) {
-  //   console.log("this:", req.params.id);
-  //   db.User.findAll({}).then(function() {
-  //     res.render("friends",{id: req.params.id});
-  //   });
-  // });
-
   // Load workout page
   app.get("/workout/:id", function(req, res) {
     db.User.findOne({
-      where: { id: req.params.id }
+      where: { id: req.params.id },
     }).then(function(data) {
       res.render("workout", {
-        data: data.dataValues
+        data: data.dataValues,
       }); //When we switch over to handlebars, we need to change this line to res.render("dash", {dbUser:dbUser})
     });
     //  db.User.findAll({}).then(function() {
