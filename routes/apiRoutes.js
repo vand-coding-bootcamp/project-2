@@ -6,18 +6,18 @@ module.exports = function(app) {
     db.User.findAll({
       include: [
         {
-          model: db.Cardio
+          model: db.Cardio,
         },
         {
-          model: db.Mind
+          model: db.Mind,
         },
         {
-          model: db.Friends
+          model: db.Friends,
         },
         {
-          model: db.Strength
-        }
-      ]
+          model: db.Strength,
+        },
+      ],
     }).then(function(data) {
       res.json(data);
     });
@@ -78,7 +78,11 @@ module.exports = function(app) {
       include: [db.Friends],
     }).then(async function(data) {
       var friends = await db.Friends.findAll();
-      var friendsData = friends.filter((v,i,a)=>a.findIndex(t=>(t.dataValues.friends === v.dataValues.friends))===i);
+      var friendsData = friends.filter(
+        (v, i, a) =>
+          a.findIndex((t) => t.dataValues.friends === v.dataValues.friends) ===
+          i
+      );
       res.render("friends", { data: data, friends: friendsData });
     });
   });
@@ -133,21 +137,18 @@ module.exports = function(app) {
 
   // Delete an workout by id
   app.delete("/api/workout/:id", function(req, res) {
+    console.log(req.body.workout_type);
     if (req.body.workout_type === "cardio") {
-      db.Cardio.destroy({ where: { id: req.params.id } }).then(function(data) {
-        res.json(data);
+      db.Cardio.destroy({ where: { id: req.params.id } }).then(function() {
+        res.status(204);
       });
     } else if (req.body.workout_type === "mind") {
-      db.Mind.destroy({ where: { id: req.params.id } }).then(function(
-        dbExample
-      ) {
-        res.json(dbExample);
+      db.Mind.destroy({ where: { id: req.params.id } }).then(function() {
+        res.status(204);
       });
     } else if (req.body.workout_type === "strength") {
-      db.Strength.destroy({ where: { id: req.params.id } }).then(function(
-        dbExample
-      ) {
-        res.json(dbExample);
+      db.Strength.destroy({ where: { id: req.params.id } }).then(function() {
+        res.status(204);
       });
     }
   });
