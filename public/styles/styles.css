@@ -1,7 +1,12 @@
 body {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
+  background-image: url("/assets/images/sweati-bg.png");
+  background-repeat: no-repeat;
 }
 
+.logo {
+  width: 60%;
+}
 /*/////////////////////////
 Fonts
 /////////////////////////*/
@@ -12,6 +17,7 @@ a:hover {
 h1 {
   color: #000000;
   font-weight: 600;
+  font-size: 60px;
 }
 
 h2 {
@@ -22,6 +28,8 @@ h2 {
 
 .navbar {
   padding: 1rem 1rem;
+  padding: 20px 60px;
+  background-color: transparent;
 }
 
 .app-name {
@@ -51,6 +59,7 @@ Homepage
 .card {
   background: #f5f5f5;
   border: none;
+  border-radius: 8px;
 }
 .card:hover {
   background: white;
@@ -62,6 +71,7 @@ Homepage
 .btn-card {
   text-align: center;
   align-items: center;
+  margin-top:20px;
 }
 
 .box {
@@ -96,12 +106,16 @@ Dashboard
 Buttons
 /////////////////////////*/
 
+.nav-btn{
+  margin-right:20px;
+}
 .btn-outline-success {
   color: #8bc2fa;
   border-radius: 25px;
   background-color: transparent;
   background-image: none;
   border-color: #8bc2fa;
+  height: 45px;
   padding: 5px 30px;
 }
 .btn-outline-success:hover {
@@ -125,13 +139,12 @@ Forms
 }
 
 .login-form{
-  margin-right:160px;
+  margin-right:140px;
 }
 .login-intro{
-  margin-left:160px;
+  margin-left:140px;
 }
 
 .wrapper {
-  margin-top:15%;
-  margin-bottom:15%;
+  margin-top:5%;
 }
