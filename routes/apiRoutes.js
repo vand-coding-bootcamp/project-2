@@ -24,27 +24,27 @@ module.exports = function(app) {
   });
 
   // Show user data in dashboard
-  app.get("/api/dashboard/:id", function(req, res) {
-    db.User.findOne({
-      where: { id: req.params.id },
-      include: [
-        {
-          model: db.Cardio,
-        },
-        {
-          model: db.Mind,
-        },
-        {
-          model: db.Friends,
-        },
-        {
-          model: db.Strength,
-        },
-      ],
-    }).then(function(dbUser) {
-      res.json(dbUser); //When we switch over to handlebars, we need to change this line to res.render("dash", {dbUser:dbUser})
-    });
-  });
+  // app.get("/api/dashboard/:id", function(req, res) {
+  //   db.User.findOne({
+  //     where: { id: req.params.id },
+  //     include: [
+  //       {
+  //         model: db.Cardio,
+  //       },
+  //       {
+  //         model: db.Mind,
+  //       },
+  //       {
+  //         model: db.Friends,
+  //       },
+  //       {
+  //         model: db.Strength,
+  //       },
+  //     ],
+  //   }).then(function(dbUser) {
+  //     res.json(dbUser); //When we switch over to handlebars, we need to change this line to res.render("dash", {dbUser:dbUser})
+  //   });
+  // });
 
   // post friends for a specific user "add route" -  add friends to friends list
   app.post("/api/friends/:id", function(req, res) {
