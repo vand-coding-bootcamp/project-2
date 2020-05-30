@@ -29,6 +29,7 @@
         {{#each friends}}
         <li>
           {{dataValues.friends}}
+           <button id="add-friend" data-friends="{{dataValues.friends}}" data-image="{{dataValues.image}}">Add</button>
         </li>
         {{/each}}
       </div>
@@ -53,4 +54,17 @@
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+<script>
+  $("#add-friend").on("click", function(){
+    var friend= {
+      friends: $("#add-friend").attr("data-friends"),
+      image: $("#add-friend").attr("data-image"),
+      userId: parseInt(/[^/]*$/.exec(window.location.href)[0])
+    }
+    $.post("/api/friends", friend).then(function(result){
+      if (result.statusCode === 201){
+        location.reload();
+      }
+    })
+  })
+</script>

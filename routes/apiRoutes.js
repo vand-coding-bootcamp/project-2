@@ -59,6 +59,18 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/friends", function(req, res) {
+    db.Friends.create({
+      // friend is pulling from front end - be sure to add "friend" as the variable
+      friends: req.body.friends,
+      image: req.body.image,
+      // change from body to user - body is just for testing purposes in postman until front end is ready
+      UserId: req.body.userId,
+    }).then(function(newFriend) {
+      res.json(newFriend);
+    });
+  });
+
   // get all friends for one user
   app.get("/api/friends/:id", function(req, res) {
     db.User.findOne({
@@ -66,8 +78,8 @@ module.exports = function(app) {
       include: [db.Friends],
     }).then(async function(data) {
       var friends = await db.Friends.findAll();
-      console.log(friends);
-      res.render("friends", { data: data, friends: friends });
+      var friendsData = friends.filter((v,i,a)=>a.findIndex(t=>(t.dataValues.friends === v.dataValues.friends))===i);
+      res.render("friends", { data: data, friends: friendsData });
     });
   });
 
