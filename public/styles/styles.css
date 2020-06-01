@@ -160,3 +160,9 @@ Forms
 .save-workout {
   margin-top:20px;
 }
+
+#display {
+  color: #8bc2fa;
+  font-weight: 600;
+  font-size:45px;
+}
