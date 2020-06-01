@@ -49,15 +49,13 @@
             $('#login').click(function () {
                 console.log('u got clicked!!')
                 var user = { username: $('#username').val(), password: $('#password').val() };
-                console.log('THI SI THE NEW USER!! ', user)
-                alert(user);
+                console.log('THIS IS THE NEW USER!! ', user)
                 $.ajax({
                     type: "POST",
                     url: "/api/login",
                     data: user,
                     success: function (dataFromBe) {
                         if (dataFromBe.success === true) {
-                            alert("success");
                             window.location = '/dashboard/' + dataFromBe.id
                         } else {
                             alert('incorrect username/password')
