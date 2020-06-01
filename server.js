@@ -1,4 +1,3 @@
-require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
 var db = require("./models");
@@ -34,6 +33,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // Starting the server, syncing our models ------------------------------------/
+console.log(db.sequelize);
 db.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {
     console.log(

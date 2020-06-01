@@ -1,16 +1,68 @@
-<!--Login Form-->
-<div class="card w-50">
-    <div class="card-body">
-        <form>
-            <div class="form-group">
-                <label for="inputUsername">Username</label>
-                <input type="email" class="form-control" id="inputUsername" aria-describedby="inputUsername">
+{{!-- =========================================================================================    --}}
+{{!-- NAVBAR --}}
+{{!-- =========================================================================================    --}}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+    aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a href="/"><img class="logo" src="/assets/images/sweati-logo@2x.png"></a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        {{!-- <a class="nav-link" href="#">Friends <span class="sr-only">(current)</span></a> --}}
+      </li>
+
+    </ul>
+    <a href="/register"><button class="btn btn-outline-success my-2 my-sm-0 nav-btn">Sign
+        Up</button></a>
+    <a href="/login"><button class="btn btn-outline-success my-2 my-sm-0 nav-btn">Login</button></a>
+  </div>
+</nav>
+<!--  Login Form -->
+<div class="container h-100 wrapper">
+    <div class="row justify-content-between">
+        <div class="col col-sm-2 login-intro my-auto">
+            <h2>Login</h2>
+            <p>Please enter your username and password to login.</p>
+        </div>
+        
+            <div class="col-sm-6 login-form my-auto">
+                <form>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="username" class="form-control form-fields" id="username" aria-describedby="inputUsername" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control form-fields" id="password" placeholder="Password">
+                    </div>
+                </form>
+                <button id="login" class="btn btn-outline-success">Login</button>
             </div>
-            <div class="form-group">
-                <label for="inputPassword">Password</label>
-                <input type="password" class="form-control" id="inputPassword">
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-    </div>
-</div>
+
+        </div>
+
+
+        <script>
+            $('#login').click(function () {
+                console.log('u got clicked!!')
+                var user = { username: $('#username').val(), password: $('#password').val() };
+                console.log('THIS IS THE NEW USER!! ', user)
+                $.ajax({
+                    type: "POST",
+                    url: "/api/login",
+                    data: user,
+                    success: function (dataFromBe) {
+                        if (dataFromBe.success === true) {
+                            window.location = '/dashboard/' + dataFromBe.id
+                        } else {
+                            alert('incorrect username/password')
+                        }
+
+                    }
+                });
+                return false;
+            });
+        </script>

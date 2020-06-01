@@ -1,0 +1,73 @@
+{{!-- =========================================================================================    --}}
+{{!-- NAVBAR --}}
+{{!-- =========================================================================================    --}}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+    aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="/">Sweati</a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="/friends/{{data.dataValues.id}}">Friends <span class="sr-only"></span></a>
+      </li>
+
+    </ul>
+    <a href="/dashboard/{{data.dataValues.id}}"><button class="btn btn-outline-success my-2 my-sm-0"
+        id="dashboard">Dashboard</button></a>
+    <a href="/logout"><button class="btn btn-outline-success my-2 my-sm-0" id="logout" type="submit">Logout</button></a>
+
+  </div>
+</nav>
+
+{{! all friends}}
+<div id="display-all-friends">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <h2>All Friends</h2>
+        {{#each friends}}
+        <li>
+          {{dataValues.username}}
+           <button id="add-friend" data-friends="{{dataValues.username}}" data-image="{{dataValues.image}}">Add</button>
+        </li>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{! your friends}}
+<div id="display-your-friends">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <h2>Your Friends</h2>
+        {{#each data.Friends}}
+        <li>
+          {{dataValues.friends}}
+        </li>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  $("#add-friend").on("click", function(){
+    var friend= {
+      friends: $("#add-friend").attr("data-friends"),
+      image: $("#add-friend").attr("data-image"),
+      userId: parseInt(/[^/]*$/.exec(window.location.href)[0])
+    } 
+    console.log(friend.userId)
+    $.post("/api/friends", friend).then(function(result){
+      if (result.statusCode === 201){
+        location.reload();
+      }
+    })
+  })
+</script>

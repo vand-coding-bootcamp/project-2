@@ -1,6 +1,7 @@
 {
   "development": {
     "username": "root",
+
     "password": "MG11181990",
     "database": "sweati_db",
     "host": "localhost",

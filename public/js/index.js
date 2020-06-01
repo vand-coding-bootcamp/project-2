@@ -3,6 +3,8 @@ var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
+var $timerButton = $("#timer-button");
+var $timerButtonEnd = $("#timer-button-end");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -97,3 +99,49 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+// workout timer interval
+var timer;
+var startTime = 0;
+var realStartTime = 0;
+var realEndTime = 0;
+
+$timerButton.on("click", workoutTimer);
+$timerButtonEnd.on("click", stopTime);
+
+function workoutTimer() {
+  timer = setInterval(time, 1000);
+  var d = new Date().toLocaleString();
+  realStartTime = d.valueOf();
+}
+
+function time() {
+  startTime++;
+  $("#display").text(timeConverter(startTime));
+  console.log(startTime);
+}
+
+function stopTime() {
+  clearInterval(timer);
+  var d = new Date().toLocaleString();
+  realEndTime = d.valueOf();
+  console.log("stopped: " + startTime);
+}
+
+// time converter
+function timeConverter(t) {
+  var minutes = Math.floor(t / 60);
+  var seconds = t - minutes * 60;
+
+  if (seconds < 10) {
+    seconds = "0" + seconds;
+  }
+
+  if (minutes === 0) {
+    minutes = "00";
+  } else if (minutes < 10) {
+    minutes = "0" + minutes;
+  }
+
+  return minutes + ":" + seconds;
+}

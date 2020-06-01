@@ -1,56 +1,165 @@
-<!--Register Form-->
-<div class="card w-50">
-    <div class="card-body">
-        <form>
-            <div class="form-group">
-                <label for="inputUsername">Username</label>
-                <input type="email" class="form-control" id="inputUsername" aria-describedby="inputUsername">
-            </div>
-            <div class="form-group">
-                <label for="inputPassword">Password</label>
-                <input type="password" class="form-control" id="inputPassword">
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm">
-                        <label for="inputPassword">Feet</label>
-                        <input type="text" class="form-control" id="feet">
-                    </div>
-                    <div class="col-sm">
-                        <label for="inputPassword">Inches</label>
-                        <input type="text" class="form-control" id="inches">
-                    </div>
-                    <div class="col-sm">
-                        <label for="inputPassword">Weight</label>
-                        <input type="text" class="form-control" id="lbs">
-                    </div>
-                    <div class="col-sm">
-                        <label for="inputPassword">Age</label>
-                        <input type="text" class="form-control" id="age">
+{{!-- =========================================================================================    --}}
+{{!-- NAVBAR --}}
+{{!-- =========================================================================================    --}}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+    aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a href="/"><img class="logo" src="/assets/images/sweati-logo@2x.png"></a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        {{!-- <a class="nav-link" href="#">Friends <span class="sr-only">(current)</span></a> --}}
+      </li>
+
+    </ul>
+    <a href="/register"><button class="btn btn-outline-success my-2 my-sm-0 nav-btn" id="signUp" type="submit">Sign
+        Up</button></a>
+    <a href="/login"><button class="btn btn-outline-success my-2 my-sm-0 nav-btn" id="login"
+        type="submit">Login</button></a>
+  </div>
+</nav>
+
+<!--  Register Form -->
+<div class="container h-100 wrapper">
+    <div class="row justify-content-between">
+        <div class="col col-sm-3 login-intro my-auto">
+            <h2>Sign Up</h2>
+            <p>Please fill out the below to become a sweati member.</p>
+        </div>
+
+        <div class="col-sm-6 login-form my-auto">
+            <form>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="username" class="form-control form-fields" id="username"
+                        aria-describedby="inputUsername">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control form-fields" id="password">
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm">
+                            <label for="height_ft">Feet</label>
+                            <input type="text" class="form-control form-fields" id="height_ft">
+                        </div>
+                        <div class="col-sm">
+                            <label for="height_in">Inches</label>
+                            <input type="text" class="form-control form-fields" id="height_in">
+                        </div>
+                        <div class="col-sm">
+                            <label for="weight">Weight</label>
+                            <input type="text" class="form-control form-fields" id="weight">
+                        </div>
+                        <div class="col-sm">
+                            <label for="age">Age</label>
+                            <input type="text" class="form-control form-fields" id="age">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="userImage">Upload Profile Image</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm">
-                        <label for="city">City</label>
-                        <input type="text" class="form-control" id="city">
-                    </div>
-                    <div class="col-sm">
-                        <label for="state">State</label>
-                        <input type="text" class="form-control" id="state">
-                    </div>
-                    <div class="col-sm">
-                        <label for="zip">Zip Code</label>
-                        <input type="text" class="form-control" id="zipCode">
+                <div class="form-group">
+                    <label for="image">Upload Profile Image</label>
+                    <input type="file" class="form-control-file form-fields" id="image">
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm">
+                            <label for="city">City</label>
+                            <input type="text" class="form-control form-fields" id="city">
+                        </div>
+                        <div class="col-sm">
+                            <label for="state">State</label>
+                            <input type="text" class="form-control form-fields" id="state">
+                        </div>
+                        <div class="col-sm">
+                            <label for="zip">Zip Code</label>
+                            <input type="text" class="form-control form-fields" id="zip">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Sign Up</button>
-        </form>
+            </form>
+            <button id="register" class="btn btn-primary btn-outline-success">Sign Up</button>
+        </div>
     </div>
-</div>
+
+    {{!-- <!--Register Form-->
+    <div class="card w-50">
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="username" class="form-control form-fields" id="username"
+                        aria-describedby="inputUsername">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control form-fields" id="password">
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm">
+                            <label for="height_ft">Feet</label>
+                            <input type="text" class="form-control form-fields" id="height_ft">
+                        </div>
+                        <div class="col-sm">
+                            <label for="height_in">Inches</label>
+                            <input type="text" class="form-control form-fields" id="height_in">
+                        </div>
+                        <div class="col-sm">
+                            <label for="weight">Weight</label>
+                            <input type="text" class="form-control form-fields" id="weight">
+                        </div>
+                        <div class="col-sm">
+                            <label for="age">Age</label>
+                            <input type="text" class="form-control form-fields" id="age">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="image">Upload Profile Image</label>
+                    <input type="file" class="form-control-file form-fields" id="image">
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm">
+                            <label for="city">City</label>
+                            <input type="text" class="form-control form-fields" id="city">
+                        </div>
+                        <div class="col-sm">
+                            <label for="state">State</label>
+                            <input type="text" class="form-control form-fields" id="state">
+                        </div>
+                        <div class="col-sm">
+                            <label for="zip">Zip Code</label>
+                            <input type="text" class="form-control form-fields" id="zip">
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            <button id="register" class="btn btn-primary btn-outline-success">Sign Up</button>
+        </div>
+    </div> --}}
+
+    <script>
+        $('#register').click(function () {
+            console.log('u got clicked!!')
+            var newUser = { username: $('#username').val(), password: $('#password').val(), height_ft: $('#height_ft').val(), height_in: $('#height_in').val(), weight: $('#weight').val(), age: $('#age').val(), city: $('#city').val(), state: $('#state').val(), zip: $('#zip').val() };
+            console.log('THIS IS THE NEW USER!! ', newUser)
+            alert(newUser);
+            $.ajax({
+                type: "POST",
+                url: "/api/register",
+                data: newUser,
+                success: function () {
+                    alert("success");
+                }
+            });
+            return false;
+        });
+
+    </script>

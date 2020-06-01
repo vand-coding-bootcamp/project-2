@@ -11,31 +11,19 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [8, 15]
+        len: [8, 100]
       }
     },
-    height: {
+    height_ft: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    height_type: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    height_two: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    height_type_two: {
+    height_in: {
       type: DataTypes.STRING,
       allowNull: false
     },
     weight: {
       type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    weight_type: {
-      type: DataTypes.STRING,
       allowNull: false
     },
     age: {
