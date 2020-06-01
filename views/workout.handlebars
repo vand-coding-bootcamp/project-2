@@ -56,7 +56,8 @@
             <button class="btn-outline-success" id="timer-button-end" type="button">End</button>
             </div>
             <!--  Save button    -->
-            <button class="btn btn-info my-2 my-sm-0 btn-outline-success s" id="add_workout" type="submit">Save</button>
+             <a href="/dashboard/{{data.id}}"><button class="btn btn-info my-2 my-sm-0 btn-outline-success s" id="add_workout" type="submit">Save</button></a>
+
         </div>
 
     </div>
@@ -85,5 +86,5 @@
             //append it to the page
             console.log(dataToPutOnPage);
         })
-                })
+                });
     </script>
