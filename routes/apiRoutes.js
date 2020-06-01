@@ -59,7 +59,7 @@ module.exports = function(app) {
       friends: req.body.friend,
       image: req.body.image,
       // change from body to user - body is just for testing purposes in postman until front end is ready
-      UserId: req.body.userId
+      UserId: req.user.userId
     }).then(function(newFriend) {
       res.json(newFriend);
     });
