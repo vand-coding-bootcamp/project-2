@@ -85,78 +85,19 @@
             <button id="register" class="btn btn-primary btn-outline-success">Sign Up</button>
         </div>
     </div>
-
-    {{!-- <!--Register Form-->
-    <div class="card w-50">
-        <div class="card-body">
-            <form>
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="username" class="form-control form-fields" id="username"
-                        aria-describedby="inputUsername">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control form-fields" id="password">
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm">
-                            <label for="height_ft">Feet</label>
-                            <input type="text" class="form-control form-fields" id="height_ft">
-                        </div>
-                        <div class="col-sm">
-                            <label for="height_in">Inches</label>
-                            <input type="text" class="form-control form-fields" id="height_in">
-                        </div>
-                        <div class="col-sm">
-                            <label for="weight">Weight</label>
-                            <input type="text" class="form-control form-fields" id="weight">
-                        </div>
-                        <div class="col-sm">
-                            <label for="age">Age</label>
-                            <input type="text" class="form-control form-fields" id="age">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="image">Upload Profile Image</label>
-                    <input type="file" class="form-control-file form-fields" id="image">
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm">
-                            <label for="city">City</label>
-                            <input type="text" class="form-control form-fields" id="city">
-                        </div>
-                        <div class="col-sm">
-                            <label for="state">State</label>
-                            <input type="text" class="form-control form-fields" id="state">
-                        </div>
-                        <div class="col-sm">
-                            <label for="zip">Zip Code</label>
-                            <input type="text" class="form-control form-fields" id="zip">
-                        </div>
-                    </div>
-                </div>
-
-            </form>
-            <button id="register" class="btn btn-primary btn-outline-success">Sign Up</button>
-        </div>
-    </div> --}}
+                
 
     <script>
         $('#register').click(function () {
             console.log('u got clicked!!')
             var newUser = { username: $('#username').val(), password: $('#password').val(), height_ft: $('#height_ft').val(), height_in: $('#height_in').val(), weight: $('#weight').val(), age: $('#age').val(), city: $('#city').val(), state: $('#state').val(), zip: $('#zip').val() };
             console.log('THIS IS THE NEW USER!! ', newUser)
-            alert(newUser);
             $.ajax({
                 type: "POST",
                 url: "/api/register",
                 data: newUser,
                 success: function () {
-                    alert("success");
+                    window.location = '/'
                 }
             });
             return false;
