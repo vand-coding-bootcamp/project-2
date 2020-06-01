@@ -30,8 +30,8 @@
         <h2>All Friends</h2>
         {{#each friends}}
         <li>
-          {{dataValues.friends}}
-           <button id="add-friend" data-friends="{{dataValues.friends}}" data-image="{{dataValues.image}}">Add</button>
+          {{dataValues.username}}
+           <button id="add-friend" data-friends="{{dataValues.username}}" data-image="{{dataValues.image}}">Add</button>
         </li>
         {{/each}}
       </div>
@@ -62,7 +62,8 @@
       friends: $("#add-friend").attr("data-friends"),
       image: $("#add-friend").attr("data-image"),
       userId: parseInt(/[^/]*$/.exec(window.location.href)[0])
-    }
+    } 
+    console.log(friend.userId)
     $.post("/api/friends", friend).then(function(result){
       if (result.statusCode === 201){
         location.reload();

@@ -33,26 +33,13 @@ module.exports = function(app) {
 // --------------------------------FRIENDS APIS---------------------------------------------
 // =========================================================================================
 
-  // post friends for a specific user "add route" -  add friends to friends list
-  app.post("/api/friends/:id", function(req, res) {
-    db.Friends.create({
-      // friend is pulling from front end - be sure to add "friend" as the variable
-      friends: req.body.friend,
-      image: req.body.image,
-      // change from body to user - body is just for testing purposes in postman until front end is ready
-      UserId: req.body.userId,
-    }).then(function(newFriend) {
-      res.json(newFriend);
-    });
-  });
-
   app.post("/api/friends", function(req, res) {
     db.Friends.create({
       // friend is pulling from front end - be sure to add "friend" as the variable
       friends: req.body.friends,
       image: req.body.image,
       // change from body to user - body is just for testing purposes in postman until front end is ready
-      UserId: req.body.userId,
+      UserId: req.body.userId
     }).then(function(newFriend) {
       res.json(newFriend);
     });
@@ -64,15 +51,16 @@ module.exports = function(app) {
       where: { id: req.params.id },
       include: [db.Friends],
     }).then(async function(data) {
-      var friends = await db.Friends.findAll();
+      var friends = await db.User.findAll();
       var friendsData = friends.filter(
         (v, i, a) =>
-          a.findIndex((t) => t.dataValues.friends === v.dataValues.friends) ===
+          a.findIndex((t) => t.dataValues.username === v.dataValues.username) ===
           i
       );
       res.render("friends", { data: data, friends: friendsData });
     });
   });
+  
 
 
 // =========================================================================================
