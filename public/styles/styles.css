@@ -24,6 +24,12 @@ h2 {
   color: #8bc2fa;
   font-weight: 600;
   font-size:45px;
+  margin-bottom: 20px;
+}
+
+h4{
+  color: #000000;
+  font-weight: 600;
 }
 
 .navbar {

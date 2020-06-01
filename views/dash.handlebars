@@ -1,24 +1,47 @@
 {{!-- =========================================================================================    --}}
 {{!-- NAVBAR --}}
 {{!-- =========================================================================================    --}}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+        aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a href="/"><img class="logo" src="/assets/images/sweati-logo@2x.png"></a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                {{!-- <a class="nav-link" href="#">Friends <span class="sr-only">(current)</span></a> --}}
+            </li>
+
+        </ul>
+        {{!-- Friends button --}}
+        <a href="/api/friends/{{data.id}}"><button class="btn btn-outline-success my-2 my-sm-0 nav-btn" id="friends">My Friends</button></a>
+        {{!-- Workout button --}}
+        <a href="/workout/{{data.id}}"><button class="btn btn-outline-success my-2 my-sm-0 nav-btn" id="workout">Workout</button></a>
+    </div>
+</nav>
+
+
+
+
+
+
+
+{{!-- =========================================================================================    --}}
+{{!-- NAVBAR --}}
+{{!-- =========================================================================================    --}}
 
 <div id="dashboard">
     <div class="container">
         <div class="row">
-            <div class="col-12 dash">
-                <h2 class="col-sm-9">Welcome, {{data.username}}</h2>
-
-                {{!-- Friends button --}}
-                <a href="/api/friends/{{data.id}}"><button class="btn-outline-success" id="friends">Friends</button></a>
-                {{!-- Workout button --}}
-                <a href="/workout/{{data.id}}"><button class="btn-outline-success" id="workout">Workout</button></a>
-            </div>
         </div>
         <br>
         <br>
         <!--Workout History Table-->
         <div class="container">
-            <h2>Workout History</h2>
+            <h2>Welcome, {{data.username}}</h2>
+            <h4>Workout History</h4>
         </div>
 
         <div class="container workout-card">
@@ -99,7 +122,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="/js/index.js"></script>
 
-{{!-- This is for the future in case we want to create a 'remove' button --}}
+    {{!-- This is for the future in case we want to create a 'remove' button --}}
 
     {{!-- <script>
         console.log('id form url', window.location.pathname)
