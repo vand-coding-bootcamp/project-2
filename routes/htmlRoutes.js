@@ -51,10 +51,10 @@ module.exports = function(app) {
   // Load workout page
   app.get("/workout/:id", function(req, res) {
     db.User.findOne({
-      where: { id: req.params.id },
+      where: { id: req.params.id }
     }).then(function(data) {
       res.render("workout", {
-        data: data.dataValues,
+        data: data.dataValues
       }); //When we switch over to handlebars, we need to change this line to res.render("dash", {dbUser:dbUser})
     });
     //  db.User.findAll({}).then(function() {

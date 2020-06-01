@@ -6,22 +6,25 @@ module.exports = function(app) {
     db.User.findAll({
       include: [
         {
-          model: db.Cardio,
+          model: db.Cardio
         },
         {
-          model: db.Mind,
+          model: db.Mind
         },
         {
-          model: db.Friends,
+          model: db.Friends
         },
         {
-          model: db.Strength,
-        },
-      ],
+          model: db.Strength
+        }
+      ]
     }).then(function(data) {
       res.json(data);
     });
   });
+// =========================================================================================
+// ----------------------------------DASHBOARD APIS-----------------------------------------
+// =========================================================================================
 
   // Show user data in dashboard
   app.get("/api/dashboard/:id", function(req, res) {
@@ -29,22 +32,26 @@ module.exports = function(app) {
       where: { id: req.params.id },
       include: [
         {
-          model: db.Cardio,
+          model: db.Cardio
         },
         {
-          model: db.Mind,
+          model: db.Mind
         },
         {
-          model: db.Friends,
+          model: db.Friends
         },
         {
-          model: db.Strength,
-        },
-      ],
+          model: db.Strength
+        }
+      ]
     }).then(function(dbUser) {
       res.json(dbUser); //When we switch over to handlebars, we need to change this line to res.render("dash", {dbUser:dbUser})
     });
   });
+
+// =========================================================================================
+// --------------------------------FRIENDS APIS---------------------------------------------
+// =========================================================================================
 
   // post friends for a specific user "add route" -  add friends to friends list
   app.post("/api/friends/:id", function(req, res) {
@@ -71,7 +78,7 @@ module.exports = function(app) {
     });
   });
 
-  // get all friends for one user
+  // // get all friends for one user
   app.get("/api/friends/:id", function(req, res) {
     db.User.findOne({
       where: { id: req.params.id },
@@ -88,13 +95,17 @@ module.exports = function(app) {
   });
 
   // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(
-      dbExample
-    ) {
-      res.json(dbExample);
-    });
-  });
+  // app.delete("/api/examples/:id", function(req, res) {
+  //   db.Example.destroy({ where: { id: req.params.id } }).then(function(
+  //     dbExample
+  //   ) {
+  //     res.json(dbExample);
+  //   });
+  // });
+
+// =========================================================================================
+// --------------------------------WORKOUT APIS---------------------------------------------
+// =========================================================================================
 
   app.post("/api/workout/:id", function(req, res) {
     console.log("we should save the body to the database", req.body);
