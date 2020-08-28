@@ -1,5 +1,5 @@
 # Sweati - a fitness app
-
+A fitness app to track timing of cardio, mindfulness, and strength training.
 ## Authors
 * Amy Haerr
 * Brooke Guarienti
